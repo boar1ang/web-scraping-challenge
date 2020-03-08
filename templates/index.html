@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Mission To Mars Template</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>.container { border: 3.5px solid darkgray; } #weather {border: 2px solid darkcyan;} #bottom {text-align: center; background-color: #ECF7F8;}</style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="jumbotron text-center">
+                <h1>Mission to Mars</h1>
+                    <p>
+                        <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Mars Data</a>
+                    </p>
+            </div>
+        </div>
+
+<!-- *************** ROW 1 ***************** -->
+        
+        <div class="row">
+            <div class="col-md-12">
+                <h3>
+                    Latest Mars News
+                </h3>
+                    <h5>
+                        {{  news_title  }}
+                    </h5>
+                        <p>
+                            {{news_p}}
+                        </p>
+
+            </div>
+
+        </div>
+ <!-- -----------New Row---------- -->       
+        
+        <div class="row">
+            <div class="col-md-7">
+                <h3>Featured Mars Image</h3>
+                <img src={featured_img_url} alt="featured img" width="550" height="550">
+
+            </div>
+            
+            <div class="col-md-5">
+                <div id="weather">
+                <h5>Current Mars Weather</h5>
+                    <p>
+                        {{mars_weather}}
+                    </p>
+                </div>
+                <br>
+                <h5>Mars Facts</h5>
+                <table>
+                    {table_html}
+                </table>
+
+            </div>
+        
+        </div>
+ 
+ <!-- End row----------------------New Row -->
+        <div class="row" id="bottom">
+            <div class="col-md-12">
+                <h3>
+                    Mars Hemispheres
+                </h3>
+                <h6>
+                    Enhanced Imagery
+                </h6>
+                <img src="{img_urls[0]}" class="rounded float-left" alt="img1" width="200" height= "200">
+                <img src="{img_urls[1]}" class="rounded float-right" alt="img2" width="200" height= "200">
+                    <br>
+                <img src="{img_urls[2]}" class="rounded float-left" alt="img3" width="200" height= "200">
+                <img src="{img_urls[3]}" class="rounded float-right" alt="img4" width="200" height= "200">
+            </div>
+        </div>
+ <!-- --End row-------------------New Row -->
+    
+
+    </div> <!--    End container    -->
+</body>
+</html>
