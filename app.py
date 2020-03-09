@@ -1,34 +1,48 @@
-#Imports
+# New Flask app to serve up 'Mission to Mars' website
+# Imports
 from flask import Flask, render_template, redirect
 from flask import request
 from flask_pymongo import PyMongo
 import pymongo
 from pymongo import MongoClient
 import scrape_mars
-from bs4 import BeautifulSoup as bs4
-import time
 
 #Create Flask instance
 app = Flask(__name__)
 
 #Establish Mongo connection
-mongo = PyMongo(app, url="mongodb://localhost:27017/mars_app")
+mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_data")
+# conn = 'mongodb://localhost:27017'
+# client = pymongo.MongoClient(conn)
 
-# Create route to render html template & connect to db
+#Connect to/create database
+# db = client.scraped_data_db
+# collection = db.mars_data
+
+# #Add data
+# db.collection.insert_many ({
+#         mars_data
+#     })
+
+# print("Connected")
+
+# Create route to render html template
 @app.route("/")
 def home():
-    return "<h3>Running ...</h3>"
     mars_data = mongo.db.collection.find_one()
-    return render_template("index.html", text="")
+    # print(mars_data)
+    
+    return "<h3>Running ... please wait ...</h3>"
+    return render_template("index.html", mars_data = mars_data)
 
 
 @app.route("/scrape")   
 def scrape():
     #Run scrape function
-    scraped_data = 
+    mars_data = scrape_mars.scrape_mars_news()
 
     #Update db
-    mongo_db_collection
+    mongo_db_collection.update({scraped_data}, mars_data, upsert=True )
 
     #Return to home pg
     return redirect("/")
